@@ -1,0 +1,94 @@
+body{
+  display: flex;
+  justify-content: center;
+  background-color: #1f1f1f;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+
+/* 체스판 */
+div.chessBoard{
+  display: flex;
+  flex-wrap : wrap;
+  background: grey;
+  border: 3px solid black ;
+  
+}
+
+/* 각 상자 */
+div.chessSquare{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width : 12.5%;
+  height : 12.5%;
+  
+}
+div.blackCell{
+  background-color: #769656;
+}
+div.whiteCell{
+  background-color: #eeeed2;
+}
+div.innerSquareBox{
+  position: absolute;
+  display : flex;
+  justify-content: center;
+  align-items: center;
+  /* 테스트용, border 삭제 필요 */
+  border: 3px solid white 
+}
+
+p.innerSquareLocate{
+  position: absolute;
+  top:10%;
+  left : 10%;
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  flex-basis: 0%;
+  color: black;
+}
+p.piece{
+  /* TODO : 나중에 그림으로 바꿔줄 것!! */
+
+  
+  font-size: 3rem;
+  color : black;
+}
+
+/* 선택하면 마우스 따라오는 div */
+div.pickupedDiv{
+  position: relative;
+  border : 3px solid white;
+
+}
+
