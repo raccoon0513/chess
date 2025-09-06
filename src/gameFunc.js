@@ -1,0 +1,5 @@
+class ChessGameControl {
+    constructor(parameters) {
+        //
+    }
+}
