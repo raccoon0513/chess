@@ -3,3 +3,5 @@ class Game {
         //this.
     }
 }
+
+export default Game;
