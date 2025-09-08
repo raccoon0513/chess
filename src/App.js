@@ -1,4 +1,5 @@
 import './App.css';
+import {ChessGameControl} from './GameFunc.js';
 import { useState } from 'react';
 
 function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, 첫글자 대문자 필수, 함수 외밖에 작성
