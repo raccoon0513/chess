@@ -1,6 +1,6 @@
 import './App.css';
-import {ChessGameControl} from './GameFunc.js';
-import { useState } from 'react';
+import { Game } from './GameControl.js';
+import { useState, useEffect } from 'react';
 
 function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, 첫글자 대문자 필수, 함수 외밖에 작성
   
@@ -33,6 +33,22 @@ function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, �
 
 }
 function App() {
+  //말 선택했을때 정의할 이벤트 리스너
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+  /////////////////////////////////
+  
   let asciiADefault = 97
 
   //해상도 받아오기
@@ -77,7 +93,9 @@ function App() {
         <div className='pickupedDiv'
       style={{
         width : `${squaresize*0.8}px`,
-        height : `${squaresize*0.8}px`
+        height : `${squaresize*0.8}px`,
+        left: mousePosition.x+'px',
+        top: mousePosition.y+'px'
       }}>
         <p className='piece'></p>
       </div>
