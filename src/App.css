@@ -91,6 +91,7 @@ div.pickupedDiv{
   border : 3px solid white;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  //visibility: hidden;
   /* pointer-events: none; == 해당 객체가 호버링 중에 클릭되지 않음 */
 }
 

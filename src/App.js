@@ -2,7 +2,7 @@ import './App.css';
 import { Game } from './GameControl.js';
 import { useState, useEffect } from 'react';
 
-function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, 첫글자 대문자 필수, 함수 외밖에 작성
+function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, 첫글자 대문자 필수, 함수 외 밖에 작성
   
   return(
     <div 
@@ -36,7 +36,11 @@ function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, �
 function App() {
   //말 선택했을때 정의할 이벤트 리스너
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [clickToggle, setClickToggle] = useState('visibility: hidden;');
+
   const handleMouseDown = (event) => {
+    //visibility: visible or hidden
+    setClickToggle('visibility: visible;')
     console.log("test")
   }
   
@@ -103,7 +107,9 @@ function App() {
         width : `${squaresize*0.8}px`,
         height : `${squaresize*0.8}px`,
         left: mousePosition.x+'px',
-        top: mousePosition.y+'px'
+        top: mousePosition.y+'px',
+        visibility: `$(clickToggle)` // visible or hidden
+        //TODO, 여기 고칠것
       }}>
         <p className='piece'></p>
       </div>
