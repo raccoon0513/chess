@@ -87,7 +87,7 @@ p.piece{
 
 /* 선택하면 마우스 따라오는 div */
 div.pickupedDiv{
-  position: relative;
+  position: fixed;
   border : 3px solid white;
   transform: translate(-50%, -50%);
   pointer-events: none;

@@ -35,6 +35,9 @@ function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, �
 function App() {
   //말 선택했을때 정의할 이벤트 리스너
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const handleMouseMove = () => {
+    console.log("test")
+  }
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -42,11 +45,14 @@ function App() {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousedown', handleMouseMove);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousedown', handleMouseMove);
     };
   }, []);
+
   /////////////////////////////////
   
   let asciiADefault = 97
