@@ -36,11 +36,16 @@ function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, �
 function App() {
   //말 선택했을때 정의할 이벤트 리스너
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [clickToggle, setClickToggle] = useState('visibility: hidden;');
+  const [clickToggle, setClickToggle] = useState(false);
 
   const handleMouseDown = (event) => {
     //visibility: visible or hidden
-    setClickToggle('visibility: visible;')
+
+    //TODO : 블럭별onclick 이벤트로 바꿔야 할 듯
+    if(clickToggle){
+
+    }
+    setClickToggle("hidden")
     console.log("test")
   }
   
@@ -108,7 +113,7 @@ function App() {
         height : `${squaresize*0.8}px`,
         left: mousePosition.x+'px',
         top: mousePosition.y+'px',
-        visibility: `$(clickToggle)` // visible or hidden
+        visibility: `${clickToggle}` // visible or hidden
         //TODO, 여기 고칠것
       }}>
         <p className='piece'></p>
