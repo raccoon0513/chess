@@ -1,8 +1,7 @@
 import './App.css';
-import { Game } from './GameControl.js';
 import { useState, useEffect } from 'react';
 
-function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, 첫글자 대문자 필수, 함수 외 밖에 작성
+function ChessSquare({col, row, cellColor, squaresize, piece}){ //컴포넌트문법, 첫글자 대문자 필수, 함수 외밖에 작성
   
   return(
     <div 
@@ -24,7 +23,7 @@ function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, �
           
         } }>
           <p className='piece'>
-          ♙
+          {piece}
         </p>
         </div>
         
@@ -32,23 +31,8 @@ function ChessSquare({col, row, cellColor, squaresize}){ //컴포넌트문법, �
   )
 
 }
-
 function App() {
-  //말 선택했을때 정의할 이벤트 리스너
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [clickToggle, setClickToggle] = useState(false);
-
-  const handleMouseDown = (event) => {
-    //visibility: visible or hidden
-
-    //TODO : 블럭별onclick 이벤트로 바꿔야 할 듯
-    if(clickToggle){
-
-    }
-    setClickToggle("hidden")
-    console.log("test")
-  }
-  
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -56,16 +40,23 @@ function App() {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousedown', handleMouseDown);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousedown', handleMouseDown);
     };
   }, []);
 
-  /////////////////////////////////
-  
+  const initialBoardState = [
+    '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜',
+    '♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟',
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    '♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙',
+    '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖',
+  ];
+
   let asciiADefault = 97
 
   //해상도 받아오기
@@ -73,7 +64,7 @@ function App() {
   let squaresize = (!isVertical ? window.innerWidth : window.innerHeight) * 0.9 /8
   const board = Array(64).fill(null);
 
-  const renderBoard = board.map((_, index) => {
+  const renderBoard = initialBoardState.map((piece, index) => {
     const colIndex = Math.floor(index / 8);
     const col = 8-colIndex;
     const rowIndex = index % 8;
@@ -88,6 +79,7 @@ function App() {
         row={row}
         cellColor={cellColor}
         squaresize={squaresize}
+        piece={piece}
         />
     )
    
@@ -107,15 +99,15 @@ function App() {
       </div>
 
       {/* 말을 선택했을떄 보여지는 코드 */}
-        <div className='pickupedDiv'
-      style={{
-        width : `${squaresize*0.8}px`,
-        height : `${squaresize*0.8}px`,
-        left: mousePosition.x+'px',
-        top: mousePosition.y+'px',
-        visibility: `${clickToggle}` // visible or hidden
-        //TODO, 여기 고칠것
-      }}>
+        <div 
+        className='pickupedDiv'
+        style={{
+          width : `${squaresize*0.8}px`,
+          height : `${squaresize*0.8}px`,
+          left: mousePosition.x + 'px',
+          top: mousePosition.y + 'px'
+        }}
+      >
         <p className='piece'></p>
       </div>
     </>
