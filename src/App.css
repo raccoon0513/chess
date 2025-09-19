@@ -7,6 +7,9 @@ body{
 .App {
   text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* 체스판과 광고 칸 사이의 간격 */
 }
 
 .App-logo {
@@ -31,6 +34,23 @@ body{
   color: white;
 }
 
+/* 광고 칸 스타일 */
+.ad-container {
+  width: 150px;
+  height: 600px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #555;
+  text-align: center;
+}
+
+.ad-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
 
 
 /* 체스판 */
@@ -87,11 +107,9 @@ p.piece{
 
 /* 선택하면 마우스 따라오는 div */
 div.pickupedDiv{
-  position: fixed;
+  position: fixed; /* 이 부분을 absolute에서 fixed로 변경 */
+  transform: translate(-50%, -50%); 
   border : 3px solid white;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  /* visibility: hidden; */
-  /* pointer-events: none; == 해당 객체가 호버링 중에 클릭되지 않음 */
+  pointer-events: none; /* 마우스 이벤트가 div를 통과하도록 추가 */
 }
 

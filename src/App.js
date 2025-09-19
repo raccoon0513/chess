@@ -87,6 +87,10 @@ function App() {
   return (
     <>
       <div className="App">
+        {/* 왼쪽 광고 칸 */}
+        <div className="ad-container left-ad">
+          <p>광고 위치</p>
+        </div>
         <div
           className='chessBoard'
           style={{
@@ -95,6 +99,10 @@ function App() {
           }}
         >
           {renderBoard}
+        </div>
+        {/* 오른쪽 광고 칸 */}
+        <div className="ad-container right-ad">
+          <p>광고 위치</p>
         </div>
       </div>
 
